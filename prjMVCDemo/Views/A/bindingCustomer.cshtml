@@ -1,14 +1,14 @@
-﻿
+﻿@model prjMVCDemo.Models.CCustomer
 @{
     string photo = "logo.jpg";
-    if (ViewBag.KK != null)
+    if (Model != null)
     {
-        photo = ViewBag.KK.fId + ".jpg";
-     }
-    ViewBag.Title = "displayqueryCustomer";
+        photo = Model.fId + ".jpg";
+    }
+    ViewBag.Title = "bindingCustomer";
 }
 
-<h2>客戶資料查詢</h2>
+<h2>繫結客戶資料</h2>
 <img src="~/Image/@photo" width="280" height="250">
 @{
     if (ViewBag.KK == null)
@@ -20,10 +20,10 @@
     else
     {
         <p>
-            <h3>@ViewBag.KK.fName</h3>
+            <h3>@Model.fName</h3>
         </p>
         <p>
-            <h3>@ViewBag.KK.fPhone</h3>
+            <h3>@Model.fPhone</h3>
         </p>
     }
 

@@ -19,6 +19,17 @@ namespace prjMVCDemo.Controllers
             return View();
         }
 
+        public string testingInsert()
+        { 
+            CCustomer customer = new CCustomer();
+            customer.fName = "test";
+            customer.fPhone = "1234567890";
+            customer.fEmail = "000@gmail.com";
+            customer.fAddress = "Taipei";
+            customer.fPassword = "123";
+            (new CCustomerFactory()).create(customer);
+            return "新增資料成功";
+        }
         public string sayHello()
         {
             return "Hello World!";
@@ -80,6 +91,31 @@ namespace prjMVCDemo.Controllers
             }
         }
 
+        public ActionResult bindingCustomer(int? id)
+        {
+            CCustomer x = null;
+            if (id != null)
+            {
+
+                SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["prjMVCDemo"].ToString());
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tCustomer WHERE fId=" + id.ToString(), con);
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read())
+                {
+                    x = new CCustomer()
+                    {
+                        fId = (int)r["fId"],
+                        fName = r["fName"].ToString(),
+                        fPhone = r["fPhone"].ToString()
+                    };
+                }
+
+                con.Close();
+            }
+            return View(x);
+        }
         public ActionResult displayqueryCustomer(int? id)
         {
             if (id != null)

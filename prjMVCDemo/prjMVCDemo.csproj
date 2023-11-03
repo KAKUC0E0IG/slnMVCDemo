@@ -90,7 +90,9 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Image\1.jpg" />
     <Content Include="Image\2.jpg" />
+    <Content Include="Image\3.jpg" />
     <Content Include="Image\logo.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -101,6 +103,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CCustomer.cs" />
+    <Compile Include="Models\CCustomerFactory.cs" />
     <Compile Include="Models\CLotto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +113,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\A\displayqueryCustomer.cshtml" />
+    <Content Include="Views\A\bindingCustomer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
