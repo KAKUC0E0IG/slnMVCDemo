@@ -1,4 +1,5 @@
 ﻿using prjMauiDemo.Model;
+using prjMVCDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -81,28 +82,53 @@ namespace prjMVCDemo.Controllers
 
         public ActionResult displayqueryCustomer(int? id)
         {
+            if (id != null)
+            {
+
+                SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["prjMVCDemo"].ToString());
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tCustomer WHERE fId=" + id.ToString(), con);
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read())
+                {
+                    CCustomer x = new CCustomer()
+                    {
+                        fId = (int)r["fId"],
+                        fName = r["fName"].ToString(),
+                        fPhone = r["fPhone"].ToString()
+                    };
+                ViewBag.KK = x;
+                }
+
+                con.Close();
+            }
             return View();
         }
         public string queryCustomer(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return "沒有指定id";
-            }
-            string s = "沒有符合查詢的資料";
-            SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["prjMVCDemo"].ToString());
-            //con.ConnectionString = @"Data Source=.;Initial Catalog=ShopTest;Integrated Security=True";
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tCustomer WHERE fId="+id.ToString(),con);
-            SqlDataReader r = cmd.ExecuteReader();
+                ViewBag.KK = "沒有符合查詢的資料";
 
-            if (r.Read())
-            {
-                s = r["fName"].ToString() + "/" + r["fPhone"].ToString();
-            }
+                SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["prjMVCDemo"].ToString());
+                //con.ConnectionString = @"Data Source=.;Initial Catalog=ShopTest;Integrated Security=True";
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tCustomer WHERE fId=" + id.ToString(), con);
+                SqlDataReader r = cmd.ExecuteReader();
 
-            con.Close();
-            return s;
+                if (r.Read())
+                {
+                    ViewBag.KK = r["fName"].ToString() + "\b" + r["fPhone"].ToString();
+                }
+
+                con.Close();
+            }
+            else
+            { 
+                ViewBag.KK = "沒有指定id";
+            }
+            return ViewBag.KK;
         }
     }
 }

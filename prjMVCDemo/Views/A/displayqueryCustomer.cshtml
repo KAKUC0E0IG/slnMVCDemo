@@ -1,13 +1,30 @@
 ﻿
 @{
+    string photo = "logo.jpg";
+    if (ViewBag.KK != null)
+    {
+        photo = ViewBag.KK.fId + ".jpg";
+     }
     ViewBag.Title = "displayqueryCustomer";
 }
 
-<h2>displayqueryCustomer</h2>
+<h2>客戶資料查詢</h2>
+<img src="~/Image/@photo">
+@{
+    if (ViewBag.KK == null)
+    {
+        <p>
+            <h3>目前沒有資料</h3>
+        </p>
+    }
+    else
+    {
+        <p>
+            <h3>@ViewBag.KK.fName</h3>
+        </p>
+        <p>
+            <h3>@ViewBag.KK.fPhone</h3>
+        </p>
+    }
 
-<p>
-Marco
-</p>
-<p>
-    0911123456
-</p>
+}
