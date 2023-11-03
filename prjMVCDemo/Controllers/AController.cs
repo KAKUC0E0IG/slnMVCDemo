@@ -1,6 +1,8 @@
 ﻿using prjMauiDemo.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
@@ -75,7 +77,32 @@ namespace prjMVCDemo.Controllers
             {
                 return "找不到該商品";
             }
+        }
 
+        public ActionResult displayqueryCustomer(int? id)
+        {
+            return View();
+        }
+        public string queryCustomer(int? id)
+        {
+            if (id == null)
+            {
+                return "沒有指定id";
+            }
+            string s = "沒有符合查詢的資料";
+            SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["prjMVCDemo"].ToString());
+            //con.ConnectionString = @"Data Source=.;Initial Catalog=ShopTest;Integrated Security=True";
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM tCustomer WHERE fId="+id.ToString(),con);
+            SqlDataReader r = cmd.ExecuteReader();
+
+            if (r.Read())
+            {
+                s = r["fName"].ToString() + "/" + r["fPhone"].ToString();
+            }
+
+            con.Close();
+            return s;
         }
     }
 }
