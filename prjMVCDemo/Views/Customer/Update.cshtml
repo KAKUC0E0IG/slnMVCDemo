@@ -1,0 +1,35 @@
+﻿@model prjMVCDemo.Models.CCustomer
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<p>
+    <form method="post" action="~/Customer/Update">
+        <input type="hidden" name="fId" value="@Model.fId" />
+        <p>
+            姓名<br />
+            <input type="text" name="fName" value="@Model.fName"/>
+        </p>
+        <p>
+            電話<br />
+            <input type="text" name="fPhone" value="@Model.fPhone"/>
+        </p>
+        <p>
+            電子郵件<br />
+            <input type="text" name="fEmail" value="@Model.fEmail"/>
+        </p>
+        <p>
+            地址<br />
+            <input type="text" name="fAddress" value="@Model.fAddress"/>
+        </p>
+        <p>
+            密碼<br />
+            <input type="text" name="fPassword" value="@Model.fPassword"/>
+        </p>
+        <p>
+            <input type="submit" name="送出並修改" />
+        </p>
+    </form>
+</p>

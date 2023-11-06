@@ -15,5 +15,51 @@ namespace prjMVCDemo.Controllers
             List<CCustomer> datas = (new CCustomerFactory()).queryAll();
             return View(datas);
         }
+
+        public ActionResult create()
+        {
+            return View();
+        }
+        public ActionResult Save()
+        {
+            CCustomer customer = new CCustomer();
+            customer.fName = Request.Form["txtName"];
+            customer.fPhone = Request.Form["txtPhone"];
+            customer.fEmail = Request.Form["txtEmail"];
+            customer.fAddress = Request.Form["txtAddress"];
+            customer.fPassword = Request.Form["txtPassword"];
+            (new CCustomerFactory()).create(customer);
+            return RedirectToAction("List");
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                (new CCustomerFactory()).delete((int)id);
+            }
+            return RedirectToAction("List");
+        }
+
+        public ActionResult Update(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("List");
+            }
+            CCustomer customer = (new CCustomerFactory()).queryById((int)id);
+            if (customer == null)
+            {
+                return RedirectToAction("List");
+            }
+            return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult Update(CCustomer customer)
+        {
+            (new CCustomerFactory()).update(customer);
+            return RedirectToAction("List");
+        }
     }
 }

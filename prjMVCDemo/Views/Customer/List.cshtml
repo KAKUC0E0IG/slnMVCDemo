@@ -4,10 +4,12 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
-
+<h2>客戶一覽</h2>
 <p>
-    <table border="1">
+<a href="~/Customer/create">新增客戶</a>
+    </p>
+<p>
+    <table border= "1">
         <tr>
             <td>序</td>
             <td>姓名</td>
@@ -15,6 +17,41 @@
             <td>電子郵件</td>
             <td>地址</td>
             <td>密碼</td>
+            <td>修改</td>
+            <td>刪除</td>
+            
         </tr>
+        @{int count = 0;
+            foreach (CCustomer t in Model)
+            {
+                count++;
+                <tr>
+                    <td>
+                        @count
+                    </td>
+                    <td>
+                        @t.fName
+                    </td>
+                    <td>
+                        @t.fPhone
+                    </td>
+                    <td>
+                        @t.fEmail
+                    </td>
+                    <td>
+                        @t.fAddress
+                    </td>
+                    <td>
+                        @t.fPassword
+                    </td>
+                    <td>
+                        @Html.ActionLink("修改", "update", "Customer", new { id = t.fId }, null )
+                    </td>
+                    <td>
+                        @Html.ActionLink("刪除", "delete", "Customer", new { id = t.fId }, new { onclick = "return confirm('確定要刪除嗎?')" })
+                    </td>
+                </tr>
+            }
+        }
     </table>
 </p>

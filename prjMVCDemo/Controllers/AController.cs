@@ -14,11 +14,23 @@ namespace prjMVCDemo.Controllers
     public class AController : Controller
     {
         // GET: A
-        public ActionResult Index()
+        public ActionResult demoForm()
         {
+            ViewBag.ANS = "?";
+            if (!string.IsNullOrEmpty(Request.Form["txtA"]))
+            {
+                int a = Convert.ToInt32(Request.Form["txtA"]);
+                int b = Convert.ToInt32(Request.Form["txtB"]);
+                int c = Convert.ToInt32(Request.Form["txtC"]);
+                ViewBag.ANS =  (new CCustomerFactory()).math(a, b, c);
+            }
             return View();
         }
 
+        public string testingQuery()
+        { 
+            return "目前總共有: "+(new CCustomerFactory()).queryAll().Count().ToString()+"名客戶";
+        }
         public string testingDelete(int? id)
         {
             if (id == null)

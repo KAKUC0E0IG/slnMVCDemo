@@ -10,6 +10,14 @@ namespace prjMVCDemo.Models
 {
     public class CCustomerFactory
     {
+        public string math(int a, int b, int c)
+        {
+            double d = Math.Sqrt((b * b) - 4 * a * c);
+            string ra = ((-b + d) / (2 * a)).ToString("0.00");
+            string rb = ((-b - d) / (2 * a)).ToString("0.00");
+            string s = ra + "或" + rb;
+            return s;
+        }
         public void delete(int fId)
         {
             string sql = "DELETE FROM tCustomer WHERE fId = @K_FID";
@@ -39,7 +47,7 @@ namespace prjMVCDemo.Models
             }
             return list;
         }
-        public List<CCustomer> queryBySql(string sql,List<SqlParameter> paras)
+        private List<CCustomer> queryBySql(string sql,List<SqlParameter> paras)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["prjMVCDemo"].ToString());
             con.Open();
