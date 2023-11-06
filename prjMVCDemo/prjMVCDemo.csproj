@@ -99,6 +99,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -114,6 +115,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\A\displayqueryCustomer.cshtml" />
     <Content Include="Views\A\bindingCustomer.cshtml" />
+    <Content Include="Views\Customer\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

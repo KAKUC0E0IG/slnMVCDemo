@@ -19,16 +19,37 @@ namespace prjMVCDemo.Controllers
             return View();
         }
 
+        public string testingDelete(int? id)
+        {
+            if (id == null)
+            {
+                return "沒有指定Id";
+            }
+            (new CCustomerFactory()).delete((int)id);
+            return "刪除資料成功";
+        }
         public string testingInsert()
         { 
             CCustomer customer = new CCustomer();
             customer.fName = "test";
-            customer.fPhone = "1234567890";
-            customer.fEmail = "000@gmail.com";
+            customer.fPhone = "4564567890";
+            customer.fEmail = "001@gmail.com";
             customer.fAddress = "Taipei";
             customer.fPassword = "123";
             (new CCustomerFactory()).create(customer);
             return "新增資料成功";
+        }
+        public string testingUpdate()
+        {
+            CCustomer customer = new CCustomer();
+            customer.fId = 6;
+            customer.fName = "test222";
+            customer.fPhone = "4564567890";
+            customer.fEmail = "001@gmail.com";
+            customer.fAddress = "Kaoshung";
+            customer.fPassword = "123";
+            (new CCustomerFactory()).update(customer);
+            return "修改資料成功";
         }
         public string sayHello()
         {
