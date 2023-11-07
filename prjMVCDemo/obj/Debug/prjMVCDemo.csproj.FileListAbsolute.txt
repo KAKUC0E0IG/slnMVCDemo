@@ -76,3 +76,8 @@ C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\obj\Debug\prjMVCDemo.csproj.CoreCompileInpu
 C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\obj\Debug\prjMVCDemo.csproj.CopyComplete
 C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\obj\Debug\prjMVCDemo.dll
 C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\obj\Debug\prjMVCDemo.pdb
+C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\bin\EntityFramework.dll
+C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\bin\EntityFramework.SqlServer.dll
+C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\bin\EntityFramework.xml
+C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\bin\EntityFramework.SqlServer.xml
+C:\msit\ASPNET\slnMVCDemo\prjMVCDemo\bin\zh-Hant\EntityFramework.resources.dll

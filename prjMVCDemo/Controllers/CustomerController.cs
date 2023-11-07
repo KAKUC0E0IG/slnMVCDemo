@@ -12,7 +12,16 @@ namespace prjMVCDemo.Controllers
         // GET: Customer
         public ActionResult List()
         {
-            List<CCustomer> datas = (new CCustomerFactory()).queryAll();
+            string keyword = Request.Form["txtKeyword"];
+            List<CCustomer> datas = null;
+            if (string.IsNullOrEmpty(keyword))
+            {
+                datas = (new CCustomerFactory()).queryAll();
+            }
+            else 
+            {
+                datas = (new CCustomerFactory()).queryByKeyword(keyword);
+            }   
             return View(datas);
         }
 
@@ -61,5 +70,6 @@ namespace prjMVCDemo.Controllers
             (new CCustomerFactory()).update(customer);
             return RedirectToAction("List");
         }
+
     }
 }

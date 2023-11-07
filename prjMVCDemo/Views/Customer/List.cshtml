@@ -5,11 +5,14 @@
 }
 
 <h2>客戶一覽</h2>
+<form method="post">
+    關鍵字<input type="text" name="txtKeyword" /><input type="submit" value="查詢" />
+    </form>
 <p>
-<a href="~/Customer/create">新增客戶</a>
+<a href="~/Customer/create" class = "btn btn-primary">新增客戶</a>
     </p>
 <p>
-    <table border= "1">
+    <table class="table table-hover">
         <tr>
             <td>序</td>
             <td>姓名</td>
@@ -19,7 +22,7 @@
             <td>密碼</td>
             <td>修改</td>
             <td>刪除</td>
-            
+
         </tr>
         @{int count = 0;
             foreach (CCustomer t in Model)
@@ -45,10 +48,10 @@
                         @t.fPassword
                     </td>
                     <td>
-                        @Html.ActionLink("修改", "update", "Customer", new { id = t.fId }, null )
+                        @Html.ActionLink("修改", "update", "Customer", new { id = t.fId }, new { @class="btn btn-primary"})
                     </td>
                     <td>
-                        @Html.ActionLink("刪除", "delete", "Customer", new { id = t.fId }, new { onclick = "return confirm('確定要刪除嗎?')" })
+                        @Html.ActionLink("刪除", "delete", "Customer", new { id = t.fId }, new { onclick = "return confirm('確定要刪除嗎?')", @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
