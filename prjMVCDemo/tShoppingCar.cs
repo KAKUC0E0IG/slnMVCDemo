@@ -11,24 +11,14 @@ namespace prjMVCDemo
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web;
-
-    public partial class tProduct
+    
+    public partial class tShoppingCar
     {
-        [DisplayName("產品編號")]
         public int fId { get; set; }
-        [Required(ErrorMessage = "名稱為必填欄位")]
-        [DisplayName("產品名稱")]
-        public string fName { get; set; }
-        [DisplayName("庫存")]
-        public Nullable<int> fQty { get; set; }
-        [DisplayName("成本")]
-        public Nullable<decimal> fCost { get; set; }
-        [DisplayName("價格")]
+        public string fDate { get; set; }
+        public Nullable<int> fCustomerId { get; set; }
+        public Nullable<int> fProductId { get; set; }
+        public Nullable<int> fCount { get; set; }
         public Nullable<decimal> fPrice { get; set; }
-        public string fImagePath { get; set; }
-        public HttpPostedFileBase photo { get; set; }
     }
 }

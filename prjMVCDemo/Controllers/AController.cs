@@ -14,6 +14,26 @@ namespace prjMVCDemo.Controllers
     public class AController : Controller
     {
         // GET: A
+        static int count = 0;
+        public ActionResult demoCountBySession()
+        {
+            int count = 0;
+            if (Session["count"] != null)
+            {
+                count= (int)Session["count"];
+            }
+            count++;
+            Session["count"] = count;
+            ViewBag.Count = count;
+            return View();
+        }
+        public ActionResult demoCount() 
+        {
+            count++;
+            ViewBag.Count = count;
+            return View();
+        }
+
         public ActionResult demoForm()
         {
             ViewBag.ANS = "?";

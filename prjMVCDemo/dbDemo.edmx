@@ -14,9 +14,22 @@
           <Property Name="fQty" Type="int" />
           <Property Name="fCost" Type="money" />
           <Property Name="fPrice" Type="money" />
+          <Property Name="fImagePath" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tShoppingCar">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="fCustomerId" Type="int" />
+          <Property Name="fProductId" Type="int" />
+          <Property Name="fCount" Type="int" />
+          <Property Name="fPrice" Type="money" />
         </EntityType>
         <EntityContainer Name="dbDemoModelStoreContainer">
           <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tShoppingCar" EntityType="Self.tShoppingCar" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -24,6 +37,7 @@
       <Schema Namespace="dbDemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ShopTestEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tProducts" EntityType="dbDemoModel.tProduct" />
+          <EntitySet Name="tShoppingCars" EntityType="dbDemoModel.tShoppingCar" />
         </EntityContainer>
         <EntityType Name="tProduct">
           <Key>
@@ -33,6 +47,18 @@
           <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fQty" Type="Int32" />
           <Property Name="fCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tShoppingCar">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fCustomerId" Type="Int32" />
+          <Property Name="fProductId" Type="Int32" />
+          <Property Name="fCount" Type="Int32" />
           <Property Name="fPrice" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
       </Schema>
@@ -44,10 +70,23 @@
           <EntitySetMapping Name="tProducts">
             <EntityTypeMapping TypeName="dbDemoModel.tProduct">
               <MappingFragment StoreEntitySet="tProduct">
+                <ScalarProperty Name="fImagePath" ColumnName="fImagePath" />
                 <ScalarProperty Name="fPrice" ColumnName="fPrice" />
                 <ScalarProperty Name="fCost" ColumnName="fCost" />
                 <ScalarProperty Name="fQty" ColumnName="fQty" />
                 <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="fId" ColumnName="fId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tShoppingCars">
+            <EntityTypeMapping TypeName="dbDemoModel.tShoppingCar">
+              <MappingFragment StoreEntitySet="tShoppingCar">
+                <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+                <ScalarProperty Name="fCount" ColumnName="fCount" />
+                <ScalarProperty Name="fProductId" ColumnName="fProductId" />
+                <ScalarProperty Name="fCustomerId" ColumnName="fCustomerId" />
+                <ScalarProperty Name="fDate" ColumnName="fDate" />
                 <ScalarProperty Name="fId" ColumnName="fId" />
               </MappingFragment>
             </EntityTypeMapping>

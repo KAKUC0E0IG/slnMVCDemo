@@ -68,12 +68,18 @@ namespace prjMVCDemo.Controllers
         {
             ShopTestEntities db = new ShopTestEntities();
             tProduct product = db.tProducts.FirstOrDefault(x => x.fId == p.fId);
+            if (p.photo != null)
+            { 
+                string photoName = Guid.NewGuid().ToString()+".jpg";
+                product.fImagePath = photoName;
+                p.photo.SaveAs(Server.MapPath("../../Image/" + photoName));
+            }
             if (p != null)
             {
-                p.fName = product.fName;
-                p.fQty = product.fQty;
-                p.fPrice = product.fPrice;
-                p.fCost = product.fCost;
+                product.fName = p.fName;
+                product.fQty = p.fQty;
+                product.fPrice = p.fPrice;
+                product.fCost = p.fCost;
                 db.SaveChanges();
             }
             return RedirectToAction("List");

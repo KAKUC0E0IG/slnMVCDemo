@@ -4,10 +4,23 @@
     <EntitySetMapping Name="tProducts">
       <EntityTypeMapping TypeName="dbDemoModel.tProduct">
         <MappingFragment StoreEntitySet="tProduct">
+          <ScalarProperty Name="fImagePath" ColumnName="fImagePath" />
           <ScalarProperty Name="fPrice" ColumnName="fPrice" />
           <ScalarProperty Name="fCost" ColumnName="fCost" />
           <ScalarProperty Name="fQty" ColumnName="fQty" />
           <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fId" ColumnName="fId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tShoppingCars">
+      <EntityTypeMapping TypeName="dbDemoModel.tShoppingCar">
+        <MappingFragment StoreEntitySet="tShoppingCar">
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fCount" ColumnName="fCount" />
+          <ScalarProperty Name="fProductId" ColumnName="fProductId" />
+          <ScalarProperty Name="fCustomerId" ColumnName="fCustomerId" />
+          <ScalarProperty Name="fDate" ColumnName="fDate" />
           <ScalarProperty Name="fId" ColumnName="fId" />
         </MappingFragment>
       </EntityTypeMapping>

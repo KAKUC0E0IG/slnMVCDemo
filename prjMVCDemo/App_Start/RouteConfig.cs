@@ -17,7 +17,7 @@ namespace prjMVCDemo
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Product", action = "List", id = UrlParameter.Optional }
+                defaults: new { controller = "Shopping", action = "List", id = UrlParameter.Optional }
             );
         }
     }

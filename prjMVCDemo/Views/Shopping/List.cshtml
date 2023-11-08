@@ -1,17 +1,11 @@
 ﻿@model IEnumerable<prjMVCDemo.tProduct>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "購物商城";
 }
 
-<h2>商品一覽</h2>
-@using (Html.BeginForm())
-{ 
-    @:關鍵字 @Html.TextBox("txtKeyWord")<input type="submit" value="查詢">
-}
-<p>
-    @Html.ActionLink("新增產品", "Create", "Product", null, new { @class= "btn btn-primary" })
-</p>
+<h2>購物商城</h2>
+
 <table class="table">
     <tr>
         <th>
@@ -37,6 +31,7 @@
 
     @{
         int count = 0;
+
         foreach (var item in Model)
         {
             count++;
@@ -60,8 +55,8 @@
                 @Html.DisplayFor(modelItem => item.fPrice)
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", "Product", new { id = item.fId }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("刪除", "Delete", "Product", new { id = item.fId }, new { @class = "btn btn-danger", onclick = "return confirm('確定要刪除嗎?')" })
+                @Html.ActionLink("加入購物車", "AddToCar", new { id = item.fId }, new { @class = "btn btn-primary" }) 
+
             </td>
         </tr>
         }

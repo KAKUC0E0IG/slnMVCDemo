@@ -26,5 +26,6 @@ namespace prjMVCDemo
         }
     
         public virtual DbSet<tProduct> tProducts { get; set; }
+        public virtual DbSet<tShoppingCar> tShoppingCars { get; set; }
     }
 }
