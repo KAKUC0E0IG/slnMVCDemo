@@ -15,6 +15,22 @@ namespace prjMVCDemo.Controllers
     {
         // GET: A
         static int count = 0;
+        public ActionResult demoCountByCookie()
+        {
+            int count = 0;
+            HttpCookie cookie = Request.Cookies["COUNT"];
+            if (cookie != null)
+            {
+                count = Convert.ToInt32(cookie.Value);
+            }
+            count++;
+            cookie = new HttpCookie("COUNT");
+            cookie.Value = count.ToString();
+            cookie.Expires = DateTime.Now.AddSeconds(20);
+            Response.Cookies.Add(cookie);
+            ViewBag.Count = count;
+            return View();
+        }
         public ActionResult demoCountBySession()
         {
             int count = 0;

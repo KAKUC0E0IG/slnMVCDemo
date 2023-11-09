@@ -5,7 +5,9 @@
 }
 
 <h2>購物商城</h2>
-
+<p>
+    @Html.ActionLink("檢視購物車", "ShoppingCar", "Shopping", null, new { @class = "btn btn-primary" })
+</p>
 <table class="table">
     <tr>
         <th>
@@ -55,7 +57,8 @@
                 @Html.DisplayFor(modelItem => item.fPrice)
             </td>
             <td>
-                @Html.ActionLink("加入購物車", "AddToCar", new { id = item.fId }, new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("加入購物車", "AddToCar", new { id = item.fId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("加入Session", "AddToSession", new { id = item.fId }, new { @class = "btn btn-primary" })
 
             </td>
         </tr>
